@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string decodeMessage(string key, string message) {
+        int i = 0 , j = 0 , n = key.length();
+        unordered_map<char, int>mp;
+            while(i<n){
+                if(key[i] !=' ' && mp.count(key[i])==0){
+                    mp[key[i]] = j++;
+                }
+                i++;
+            }
+        string ans = "";
+        for(int k = 0 ; k<message.length(); k++){
+            if(message[k]==' ')ans+=' ';
+            else{
+                ans+=('a'+mp[message[k]]);
+            }
+        }
+        return ans;
+    }
+};
